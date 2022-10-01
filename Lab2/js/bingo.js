@@ -59,11 +59,11 @@ export default class Bingo {
 
     // 🔥🔥🔥 TODO 6
     // count all cards that are marked as done (select done items and count them with .length)
-    /// let cardsDone = ;
-    // if (cardsDone.length === 5) {
-    // show the animated gif to the winner
-    // document.querySelector(".bingo__overlay").style.display = "block";
-    // }
+    let cardsDone = document.getElementsByClassName("bingo__card--done");
+    console.log(`CardsDone: ${cardsDone.length}`)
+    if (cardsDone.length === 5) {
+        document.querySelector(".bingo__overlay").style.display = "block";
+    }
   }
 
   static save() {
@@ -71,17 +71,17 @@ export default class Bingo {
     // save the cards that are done to localstorage
     // you can simply save an array with the card numbers like [1, 6, 8]
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
-    let cardsWon = [];
-    console.log("Saving bingo to localstorage");
-    // let cards = document.querySelectorAll(".bingo__card--done");
+    let cards = Array
+        .from(document.getElementsByClassName("bingo__card--done"))
+        .map(element => element.dataset.number);
 
     // if there are not done cards, remove localstorage
-    // if (cards.length === 0) {
-    // remove localstorage
-    // }
+    if (cards.length === 0) {
+        localStorage.removeItem("bingo");
+    }
 
     // save a selection like [1, 7, 8] to localstorage item "bingo"
-    // you might want to check out how JSON.stringify() works
+    localStorage.setItem("bingo", JSON.stringify(cards));
   }
 
   static load() {
