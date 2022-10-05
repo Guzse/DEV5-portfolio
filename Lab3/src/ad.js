@@ -15,10 +15,16 @@ export default class Ad {
         }
     }
 
+    createAd(cocktail) {
+
+    }
+
     async findCocktail(position) {
         const {weather, temp} = {...await this.weatherAPI.getWeather(position)};
         console.log(`weather: ${weather}, temp: ${temp}`);
         let cocktail = null;
+
+        cocktail = await this.cocktailAPI.getCocktailByName('Dark');
         if (weather === 'Clear') {
             if (temp > 20) {
                 cocktail = await this.cocktailAPI.getCocktailByName('Pina Colada');
@@ -29,7 +35,41 @@ export default class Ad {
                 cocktail = await this.cocktailAPI.getCocktailByIngredient('Gin', '&g=Martini Glass');
             }
         }
-        
-        console.log(cocktail);
+        else if (weather === 'Clouds') {
+            if (temp > 20) {
+                cocktail = await this.cocktailAPI.getCocktailByName('Margarita');
+            } else if (temp < 5) {
+                cocktail = await this.cocktailAPI.getCocktailByIngredient('Coffee');
+            }
+            else {
+                cocktail = await this.cocktailAPI.getCocktailByIngredient('Vodka');
+            }
+        }
+        else if (weather === 'Snow') {
+            const blackList = ["14456", "12786", "12870"];
+            while (cocktail === null || blackList.includes(cocktail.idDrink)) {
+                cocktail = await this.cocktailAPI.getCocktailByIngredient('Tea');
+            }
+        }
+        else if (weather === 'Rain') {
+            if (temp > 15) {
+                cocktail = await this.cocktailAPI.getCocktailByName('Ginger ale');
+            }
+            else {
+                cocktail = await this.cocktailAPI.getCocktailByIngredient('Whiskey');
+            }
+        }
+        else if (weather === 'Thunderstorm') {
+            if (temp > 15) {
+                cocktail = await this.cocktailAPI.getCocktailByName('Dark and Stormy');
+            }
+            else {
+                cocktail = await this.cocktailAPI.getCocktailByIngredient('Whiskey');
+            }
+        }
+        else {
+
+        }
+        this.createAd(cocktail);
     }
 }
