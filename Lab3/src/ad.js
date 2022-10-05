@@ -17,7 +17,13 @@ export default class Ad {
 
     createAd(cocktail) {
         console.log(cocktail);
-
+        const nameElement = document.querySelector('.drink__name');
+        const imageElement = document.querySelector('.drink__image');
+        console.log(nameElement, frameElement);
+        
+        nameElement.textContent = cocktail.strDrink;
+        // Change image src
+        imageElement.src = cocktail.strDrinkThumb;
     }
 
     async findCocktail(position) {
