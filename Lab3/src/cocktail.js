@@ -14,4 +14,11 @@ export default class CocktailAPI {
         let search = await response.json();
         return search.drinks[0];
     }
+
+    async getCocktailByCategory(category) {
+        let url = `${COCKTAIL_URI}filter.php?c=${category}`;
+        let response = await fetch(url);
+        let search = await response.json();
+        return search.drinks[0];
+    }
 }
