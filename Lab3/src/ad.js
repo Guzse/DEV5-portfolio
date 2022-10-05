@@ -16,6 +16,7 @@ export default class Ad {
     }
 
     createAd(cocktail) {
+        console.log(cocktail);
 
     }
 
@@ -24,7 +25,6 @@ export default class Ad {
         console.log(`weather: ${weather}, temp: ${temp}`);
         let cocktail = null;
 
-        cocktail = await this.cocktailAPI.getCocktailByName('Dark');
         if (weather === 'Clear') {
             if (temp > 20) {
                 cocktail = await this.cocktailAPI.getCocktailByName('Pina Colada');
@@ -68,7 +68,7 @@ export default class Ad {
             }
         }
         else {
-
+            cocktail = await this.cocktailAPI.getRandomCocktail();
         }
         this.createAd(cocktail);
     }
