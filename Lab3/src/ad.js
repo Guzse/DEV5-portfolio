@@ -19,14 +19,16 @@ export default class Ad {
         const {weather, temp} = {...await this.weatherAPI.getWeather(position)};
         console.log(`weather: ${weather}, temp: ${temp}`);
         let cocktail = null;
-        cocktail = await this.cocktailAPI.getCocktailByName('Irish Coffee');
+        cocktail = await this.cocktailAPI.getCocktailByCategory('Coffee / Tea', '&i=Coffee');
         if (weather === 'Clear') {
             if (temp > 20) {
                 cocktail = await this.cocktailAPI.getCocktailByName('Pina Colada');
             } else if (temp < 5) {
-                cocktail = await this.cocktailAPI.getCocktailByName('Irish Coffee');
+                cocktail = await this.cocktailAPI.getCocktailByCategory('Coffee / Tea', '&i=Coffee');
             }
-
+            else {
+                
+            }
         }
         console.log(cocktail);
     }
