@@ -1,20 +1,24 @@
 import WeatherAPI from "./weather";
+import CocktailAPI from "./cocktail";
 const WEATHER_URI = "https://api.openweathermap.org/data/2.5/weather?";
 
 export default class Ad {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.weatherAPI = new WeatherAPI(apiKey);
+        this.cocktailAPI = new CocktailAPI();
 
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.getWeather.bind(this)); 
+            navigator.geolocation.getCurrentPosition(this.findCocktail.bind(this)); 
         } else {
-            alert("This browser does not support geolocation");
+            alert("This browser does not support geolcoation");
         }
     }
 
-    async getWeather(position) {
-        const weather = await this.weatherAPI.getWeather(position);
-        console.log(weather);
+    async findCocktail(position) {
+        const {weather, temp} = {...await this.weatherAPI.getWeather(position)};
+        
+
+
     }
 }
