@@ -21,7 +21,7 @@ export default class Ad {
         const imageElement = document.querySelector('.drink__image');
         console.log(nameElement, frameElement);
         
-        nameElement.textContent = cocktail.strDrink;
+        nameElement.textContent = cocktail.strDrink.toUpperCase();
         // Change image src
         imageElement.src = cocktail.strDrinkThumb;
     }
