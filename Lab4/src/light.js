@@ -21,11 +21,9 @@ export default class Light {
         5
     );
 
-    t = 0;
-    animate() {
-        this.t += 0.005;
-        this.directionalLight.position.x = 1000 * Math.sin(this.t);
-        this.directionalLight.position.y = 1000 * Math.cos(this.t);
-        this.directionalLight.position.z = 500 * Math.cos(this.t);
+    animate(t) {
+        this.directionalLight.position.x = 1000 * Math.sin(t);
+        this.directionalLight.position.y = 1000 * Math.cos(t);
+        this.directionalLight.position.z = 500 * Math.cos(t);
     }
 }

@@ -21,10 +21,12 @@ let light = new Light(scene);
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 
+let t = 0;
 function animate() {
     requestAnimationFrame(animate);
-    light.animate();
+    light.animate(t);
     renderer.render(scene, camera.perspectiveCamera);
+    t += 0.005;
 }
 
 animate();
