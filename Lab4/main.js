@@ -1,5 +1,6 @@
 import './style.css';
 import * as THREE from 'three';
+import { WebGL1Renderer } from 'three';
 import House from './src/house';
 import Terrain from './src/terrain';
 import Camera from './src/camera';
