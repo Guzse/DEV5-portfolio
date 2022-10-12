@@ -8,10 +8,11 @@ export default class House {
     textureLoader = new THREE.TextureLoader();
 
     // Textures
-    tBricks = this.textureLoader.load('../textures/Stone_Wall_007_COLOR.jpg');
-
+    tBricks = this.textureLoader.load('../textures/stonewall/Stone_Wall_007_COLOR.jpg');
+    nmBricks = this.textureLoader.load('../textures/stonewall/Stone_Wall_007_NRM.jpg');
+    
     // Brick material texture
-    mBricks = new THREE.MeshLambertMaterial({ color: 0xffffff, map: this.tBricks });
+    mBricks = new THREE.MeshLambertMaterial({ color: 0xffffff, map: this.tBricks, lightMap: this.nmBricks });
     mRoof = new THREE.MeshLambertMaterial({ color: 0x993333 });
     mDoor = new THREE.MeshLambertMaterial({ color: 0x332211 });
 
