@@ -10,7 +10,7 @@ export default class Light {
         if (showHelper) scene.add(this.directionalLightHelper);
     }
     // Add ambient light
-    ambientLight = new THREE.AmbientLight(0xccccff, 0.2);
+    ambientLight = new THREE.AmbientLight(0xccccff, 1);
 
     // Add directional light
     directionalLight = new THREE.DirectionalLight(0xffeecc, 2);

@@ -1,7 +1,13 @@
 import * as THREE from 'three';
 export default class Textures {
+    constructor() {
+        this.tBricks.wrapS = this.tBricks.wrapT = THREE.RepeatWrapping;
+        this.nBricks.wrapS = this.nBricks.wrapT = THREE.RepeatWrapping;
+        this.rBricks.wrapS = this.rBricks.wrapT = THREE.RepeatWrapping;
+        this.aoBricks.wrapS = this.aoBricks.wrapT = THREE.RepeatWrapping;
+    }
     textureLoader = new THREE.TextureLoader();
-    
+
     // Brick textures
     tBricks = this.textureLoader.load(
         "../textures/stonewall/Stone_Wall_007_COLOR.jpg"
