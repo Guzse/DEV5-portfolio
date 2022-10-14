@@ -18,7 +18,7 @@ export default class House {
     }
 
     // Brick material
-    mBricks = new THREE.MeshLambertMaterial({
+    mBricks = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         map: this.textures.tBricks,
         normalMap: this.textures.nBricks,
@@ -28,16 +28,16 @@ export default class House {
     });
 
     // Roof material
-    mRoof = new THREE.MeshLambertMaterial({
+    mRoof = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         map: this.textures.tRoof,
         normalMap: this.textures.nRoof,
         roughnessMap: this.textures.rRoof,
         aoMap: this.aoRoof,
-        //displacementMap: this.textures.hRoof,
+        displacementMap: this.textures.hRoof,
     });
 
-    mConcrete = new THREE.MeshLambertMaterial({
+    mConcrete = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         map: this.textures.tConcrete,
         normalMap: this.textures.nConcrete,
@@ -68,10 +68,10 @@ export default class House {
 
     createStructure() {
         // Create shapes for the house
-        let geometryWall1 = new THREE.BoxGeometry(8, 4, 0.2);
-        let geometryWall2 = new THREE.BoxGeometry(0.2, 4, 8);
+        let geometryWall1 = new THREE.BoxGeometry(8, 4, 0.2, 100, 100, 100);
+        let geometryWall2 = new THREE.BoxGeometry(0.2, 4, 8, 100, 100, 100);
         let geometryRoofSupport = this.createRoofPoint();
-        let geometryRoof = new THREE.BoxGeometry(8.5, 0.2, 5.5);
+        let geometryRoof = new THREE.PlaneGeometry(8.5, 5.5, 100, 100, 100);
 
         // Create walls
         let object = [
@@ -97,10 +97,10 @@ export default class House {
         // Create roof
         object[6].position.set(...this.applyPosition(2.4, 4.8, 4));
         object[6].rotateY(1.5708);
-        object[6].rotateX(0.48);
+        object[6].rotateX(5.16617);
         object[7].position.set(...this.applyPosition(-2.4, 4.8, 4));
         object[7].rotateY(-1.5708);
-        object[7].rotateX(0.48);
+        object[7].rotateX(5.16617);
 
         // Create foundation
         object[8].position.set(...this.applyPosition(0, -1, 4));
