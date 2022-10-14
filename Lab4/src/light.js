@@ -5,6 +5,11 @@ export default class Light {
         scene.add(this.ambientLight);
 
         this.directionalLight.castShadow = true;
+
+        this.directionalLight.shadow.mapSize.width = 512; // default
+        this.directionalLight.shadow.mapSize.height = 512; // default
+        this.directionalLight.shadow.camera.near = 0.5; // default
+        this.directionalLight.shadow.camera.far = 500; // default
         this.directionalLight.position.set(0, 10, 0);
         scene.add(this.directionalLight);
 

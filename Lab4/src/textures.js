@@ -47,6 +47,23 @@ export default class Textures {
         "../textures/concrete/Concrete_019_Roughness.jpg"
     );
     aoConcrete = this.textureLoader.load(
-        "../textures/concrete/Concrete_019_AmbientOcclusion.png"
+        "../textures/concrete/Concrete_019_AmbientOcclusion.jpg"
     );
+
+    // Concrete textures
+    tSand = this.textureLoader.load(
+        "../textures/sand/Stylized_Sand_001_BaseColor.jpg"
+    );
+    nSand = this.textureLoader.load(
+        "../textures/sand/Stylized_Sand_001_Normal.jpg"
+    );
+    rSand = this.textureLoader.load(
+        "../textures/sand/Stylized_Sand_001_Roughness.jpg"
+    );
+    aoSand = this.textureLoader.load(
+        "../textures/sand/Stylized_Sand_001_AmbientOcclusion.jpg"
+    );
+    hSand = this.textureLoader.load(
+        "../textures/sand/Stylized_Sand_001_Height.png"
+    );  
 }
