@@ -13,6 +13,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+renderer.setClearColor(0x87ceeb);
+
 document.body.appendChild(renderer.domElement);
 
 let camera = new Camera(scene, renderer);
@@ -27,7 +29,7 @@ scene.add(gridHelper);
 let t = 0;
 function animate() {
     requestAnimationFrame(animate);
-    light.animate(t);
+    //light.animate(t);
     renderer.render(scene, camera.perspectiveCamera);
     t += 0.005;
 }

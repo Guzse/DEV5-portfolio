@@ -1,10 +1,14 @@
 import * as THREE from 'three';
 export default class Textures {
     constructor() {
-        this.tBricks.wrapS = this.tBricks.wrapT = THREE.RepeatWrapping;
-        this.nBricks.wrapS = this.nBricks.wrapT = THREE.RepeatWrapping;
-        this.rBricks.wrapS = this.rBricks.wrapT = THREE.RepeatWrapping;
-        this.aoBricks.wrapS = this.aoBricks.wrapT = THREE.RepeatWrapping;
+        Object.values(this).forEach((item) => {
+            if (typeof item === "THREE.Texture") {
+                item.wrapS = item.wrapT = THREE.RepeatWrapping;
+            }
+            else {
+                console.log("Not a texture");
+            }
+        });
     }
     textureLoader = new THREE.TextureLoader();
 
@@ -21,6 +25,9 @@ export default class Textures {
     aoBricks = this.textureLoader.load(
         "../textures/stonewall/Stone_Wall_007_OCC.jpg"
     );
+    hBricks = this.textureLoader.load(
+        "../textures/stonewall/Stone_Wall_007_DISP.jpg"
+    );
 
     // Roof textures
     tRoof = this.textureLoader.load(
@@ -35,6 +42,9 @@ export default class Textures {
     aoRoof = this.textureLoader.load(
         "../textures/roof/Roof_Tiles_Terracota_002_ambientOcclusion.jpg"
     );
+    hRoof = this.textureLoader.load(
+        "../textures/roof/Roof_Tiles_Terracota_002_height.png"
+    );
 
     // Concrete textures
     tConcrete = this.textureLoader.load(
@@ -48,6 +58,9 @@ export default class Textures {
     );
     aoConcrete = this.textureLoader.load(
         "../textures/concrete/Concrete_019_AmbientOcclusion.jpg"
+    );
+    hConcrete = this.textureLoader.load(
+        "../textures/concrete/Concrete_019_Height.png"
     );
 
     // Concrete textures

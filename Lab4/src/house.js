@@ -24,6 +24,7 @@ export default class House {
         normalMap: this.textures.nBricks,
         roughnessMap: this.textures.rBricks,
         aoMap: this.textures.aoBricks,
+        //displacementMap: this.textures.hBricks,
     });
 
     // Roof material
@@ -33,6 +34,7 @@ export default class House {
         normalMap: this.textures.nRoof,
         roughnessMap: this.textures.rRoof,
         aoMap: this.aoRoof,
+        //displacementMap: this.textures.hRoof,
     });
 
     mConcrete = new THREE.MeshLambertMaterial({
@@ -41,6 +43,7 @@ export default class House {
         normalMap: this.textures.nConcrete,
         roughnessMap: this.textures.rConcrete,
         aoMap: this.textures.aoConcrete,
+        displacementMap: this.textures.hConcrete,
     });
 
     /**

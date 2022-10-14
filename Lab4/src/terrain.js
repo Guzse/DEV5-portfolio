@@ -20,11 +20,18 @@ export default class Terrain {
         displacementMap: this.textures.hSand,
     });
 
+    applyPosition(x, y, z) {
+        let X = this.position.x + x;
+        let Y = this.position.y + y;
+        let Z = this.position.z + z;
+        return [X, Y, Z];
+    }
+
     createTerrain() {
         const geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
         const plane = new THREE.Mesh(geometry, this.mSand);
         plane.rotation.x = -Math.PI / 2;
-        plane.position.set(0, -0.1, 0);
+        plane.position.set(...this.applyPosition(0, -0.1, 0));
         plane.receiveShadow = true;
         plane.castShadow = true;
         this.scene.add(plane);
