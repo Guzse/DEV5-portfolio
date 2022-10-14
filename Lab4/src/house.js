@@ -64,6 +64,7 @@ export default class House {
     }
 
     createStructure() {
+        // Create shapes for the house
         let geometryWall1 = new THREE.BoxGeometry(8, 4, 0.2);
         let geometryWall2 = new THREE.BoxGeometry(0.2, 4, 8);
         let geometryRoofSupport = this.createRoofPoint();

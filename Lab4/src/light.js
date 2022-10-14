@@ -4,6 +4,7 @@ export default class Light {
     constructor(scene, showHelper) {
         scene.add(this.ambientLight);
 
+        this.directionalLight.castShadow = true;
         this.directionalLight.position.set(0, 10, 0);
         scene.add(this.directionalLight);
 
