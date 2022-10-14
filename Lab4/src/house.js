@@ -35,6 +35,7 @@ export default class House {
         roughnessMap: this.textures.rRoof,
         aoMap: this.aoRoof,
         displacementMap: this.textures.hRoof,
+        displacementScale: 0.5,
     });
 
     mConcrete = new THREE.MeshPhongMaterial({
@@ -44,6 +45,8 @@ export default class House {
         roughnessMap: this.textures.rConcrete,
         aoMap: this.textures.aoConcrete,
         displacementMap: this.textures.hConcrete,
+        displacementScale: 0.2,
+        displacementBias: 0.3,
     });
 
     /**
@@ -72,7 +75,8 @@ export default class House {
         let geometryWall2 = new THREE.BoxGeometry(0.2, 4, 8, 100, 100, 100);
         let geometryRoofSupport = this.createRoofPoint();
         let geometryRoof = new THREE.PlaneGeometry(8.5, 5.5, 100, 100, 100);
-
+        let geometryFoundation = new THREE.BoxGeometry(8, 2, 8, 100, 100, 100);
+        
         // Create walls
         let object = [
             new THREE.Mesh(geometryWall1, this.mBricks),
@@ -83,7 +87,7 @@ export default class House {
             new THREE.Mesh(geometryRoofSupport, this.mBricks),
             new THREE.Mesh(geometryRoof, this.mRoof),
             new THREE.Mesh(geometryRoof, this.mRoof),
-            new THREE.Mesh(new THREE.BoxGeometry(8, 2, 8), this.mConcrete),
+            new THREE.Mesh(geometryFoundation, this.mConcrete),
         ];
         object[0].position.set(...this.applyPosition(0, 2, 0));
         object[1].position.set(...this.applyPosition(4, 2, 4));
@@ -98,9 +102,11 @@ export default class House {
         object[6].position.set(...this.applyPosition(2.4, 4.8, 4));
         object[6].rotateY(1.5708);
         object[6].rotateX(5.16617);
+        object[6].material.side = THREE.DoubleSide;
         object[7].position.set(...this.applyPosition(-2.4, 4.8, 4));
         object[7].rotateY(-1.5708);
         object[7].rotateX(5.16617);
+        object[7].material.side = THREE.DoubleSide;
 
         // Create foundation
         object[8].position.set(...this.applyPosition(0, -1, 4));
