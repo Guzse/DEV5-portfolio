@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import Textures from './textures';
 
 export default class Terrain {
@@ -18,6 +19,7 @@ export default class Terrain {
         roughnessMap: this.textures.rSand,
         aoMap: this.textures.aoSand,
         displacementMap: this.textures.hSand,
+        displacementScale: 0.3,
     });
 
     applyPosition(x, y, z) {
@@ -28,7 +30,7 @@ export default class Terrain {
     }
 
     createTerrain() {
-        const geometry = new THREE.PlaneGeometry(100, 100, 100, 100);
+        const geometry = new THREE.PlaneGeometry(100, 100, 1000, 1000);
         const plane = new THREE.Mesh(geometry, this.mSand);
         plane.rotation.x = -Math.PI / 2;
         plane.position.set(...this.applyPosition(0, -0.1, 0));
@@ -38,6 +40,16 @@ export default class Terrain {
     }
 
     generateObjects() {
-
+        // Import the models
+        const loader = new GLTFLoader();
+        loader.load('./models/stylized_cactus.glb', (gltf) => {
+            const cactus = gltf.scene.children[0];
+            cactus.scale.set(1, 1, 1);
+            cactus.position.set(...this.applyPosition(10, 1, 10));
+            cactus.castShadow = true;
+            cactus.receiveShadow = true;
+            this.scene.add(cactus);
+        }
+        );
     }
 }

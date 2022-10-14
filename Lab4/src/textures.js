@@ -1,14 +1,32 @@
 import * as THREE from 'three';
 export default class Textures {
     constructor() {
-        Object.values(this).forEach((item) => {
-            if (typeof item === "THREE.Texture") {
-                item.wrapS = item.wrapT = THREE.RepeatWrapping;
-            }
-            else {
-                console.log("Not a texture");
-            }
-        });
+        this.tSand.repeat.set(10, 10);
+        this.tSand.wrapS = THREE.RepeatWrapping;
+        this.tSand.wrapT = THREE.RepeatWrapping;
+        this.nSand.repeat.set(10, 10);
+        this.nSand.wrapS = THREE.RepeatWrapping;
+        this.nSand.wrapT = THREE.RepeatWrapping;
+        this.rSand.repeat.set(10, 10);
+        this.rSand.wrapS = THREE.RepeatWrapping;
+        this.rSand.wrapT = THREE.RepeatWrapping;
+        this.aoSand.repeat.set(10, 10);
+        this.aoSand.wrapS = THREE.RepeatWrapping;
+        this.aoSand.wrapT = THREE.RepeatWrapping;
+        this.hSand.repeat.set(10, 10);
+        this.hSand.wrapS = THREE.RepeatWrapping;
+        this.hSand.wrapT = THREE.RepeatWrapping;
+        
+        this.tBricks.wrapS = THREE.RepeatWrapping;
+        this.tBricks.wrapT = THREE.RepeatWrapping;
+        this.nBricks.wrapS = THREE.RepeatWrapping;
+        this.nBricks.wrapT = THREE.RepeatWrapping;
+        this.rBricks.wrapS = THREE.RepeatWrapping;
+        this.rBricks.wrapT = THREE.RepeatWrapping;
+        this.aoBricks.wrapS = THREE.RepeatWrapping;
+        this.aoBricks.wrapT = THREE.RepeatWrapping;
+        this.hBricks.wrapS = THREE.RepeatWrapping;
+        this.hBricks.wrapT = THREE.RepeatWrapping;
     }
     textureLoader = new THREE.TextureLoader();
 
