@@ -5,7 +5,6 @@ export default class Light {
         scene.add(this.ambientLight);
 
         this.directionalLight.castShadow = true;
-
         this.directionalLight.shadow.mapSize.width = 512; // default
         this.directionalLight.shadow.mapSize.height = 512; // default
         this.directionalLight.shadow.camera.near = 0.5; // default
@@ -16,10 +15,10 @@ export default class Light {
         if (showHelper) scene.add(this.directionalLightHelper);
     }
     // Add ambient light
-    ambientLight = new THREE.AmbientLight(0xccccff, 1);
+    ambientLight = new THREE.AmbientLight(0xccccff, 0.5);
 
     // Add directional light
-    directionalLight = new THREE.DirectionalLight(0xffeecc, 2);
+    directionalLight = new THREE.DirectionalLight(0xffeecc, 1.5);
 
     // Add directional light helper
     directionalLightHelper = new THREE.DirectionalLightHelper(
@@ -28,8 +27,8 @@ export default class Light {
     );
 
     animate(t) {
-        this.directionalLight.position.x = 1000 * Math.sin(t);
-        this.directionalLight.position.y = 1000 * Math.cos(t);
-        this.directionalLight.position.z = 500 * Math.cos(t);
+        this.directionalLight.position.x = 10000 * Math.sin(t);
+        this.directionalLight.position.y = 10000 * Math.cos(t);
+        this.directionalLight.position.z = 5000 * Math.cos(t);
     }
 }

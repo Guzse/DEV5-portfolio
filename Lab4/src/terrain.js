@@ -17,7 +17,7 @@ export default class Terrain {
         normalMap: this.textures.nSand,
         roughnessMap: this.textures.rSand,
         aoMap: this.textures.aoSand,
-        
+        displacementMap: this.textures.hSand,
     });
 
     createTerrain() {
@@ -26,6 +26,7 @@ export default class Terrain {
         plane.rotation.x = -Math.PI / 2;
         plane.position.set(0, -0.1, 0);
         plane.receiveShadow = true;
+        plane.castShadow = true;
         this.scene.add(plane);
     }
 
