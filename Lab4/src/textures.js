@@ -35,4 +35,18 @@ export default class Textures {
     aoRoof = this.textureLoader.load(
         "../textures/roof/Roof_Tiles_Terracota_002_ambientOcclusion.jpg"
     );
+
+    // Concrete textures
+    tConcrete = this.textureLoader.load(
+        "../textures/concrete/Concrete_019_BaseColor.jpg"
+    );
+    nConcrete = this.textureLoader.load(
+        "../textures/concrete/Concrete_019_Normal.jpg"
+    );
+    rConcrete = this.textureLoader.load(
+        "../textures/concrete/Concrete_019_Roughness.jpg"
+    );
+    aoConcrete = this.textureLoader.load(
+        "../textures/concrete/Concrete_019_AmbientOcclusion.png"
+    );
 }
