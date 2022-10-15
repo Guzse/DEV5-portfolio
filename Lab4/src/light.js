@@ -25,12 +25,4 @@ export default class Light {
         this.directionalLight,
         5
     );
-
-    animate(t) {
-        this.directionalLight.position.x = 10000 * Math.sin(t);
-        this.directionalLight.position.y = 10000 * Math.cos(t);
-        this.directionalLight.position.z = 5000 * Math.cos(t);
-        // update shadows
-        this.directionalLight.shadow.camera.updateProjectionMatrix();
-    }
 }
