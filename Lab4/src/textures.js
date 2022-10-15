@@ -44,7 +44,7 @@ export default class Textures {
         "../textures/stonewall/Stone_Wall_007_OCC.jpg"
     );
     hBricks = this.textureLoader.load(
-        "../textures/stonewall/Stone_Wall_007_DISP.jpg"
+        "../textures/stonewall/Stone_Wall_007_DISP.png"
     );
 
     // Roof textures

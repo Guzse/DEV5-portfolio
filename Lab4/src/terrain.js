@@ -1,9 +1,9 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import Textures from './textures';
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import Textures from "./textures";
 
 export default class Terrain {
-    constructor(scene, position = {x: 0, y: 0, z: 0}) {
+    constructor(scene, position = { x: 0, y: 0, z: 0 }) {
         this.scene = scene;
         this.position = position;
         this.createTerrain();
@@ -42,14 +42,16 @@ export default class Terrain {
     generateObjects() {
         // Import the models
         const loader = new GLTFLoader();
-        loader.load('./models/stylized_cactus.glb', (gltf) => {
-            const cactus = gltf.scene.children[0];
-            cactus.scale.set(1, 1, 1);
-            cactus.position.set(...this.applyPosition(10, 1, 10));
-            cactus.castShadow = true;
-            cactus.receiveShadow = true;
-            this.scene.add(cactus);
+        for (let i = 0; i < 25; i++) {
+            loader.load("./models/stylized_cactus.glb", (gltf) => {
+                const cactus = gltf.scene;
+                const x = (Math.random() - 0.5) * 100;
+                const z = (Math.random() - 0.5) * 100;
+                cactus.children.forEach(child => child.castShadow = true);
+                console.log(x, z, cactus);
+                cactus.position.set(...this.applyPosition(x, 1, z));
+                this.scene.add(cactus);
+            });
         }
-        );
     }
 }
