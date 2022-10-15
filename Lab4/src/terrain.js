@@ -61,8 +61,8 @@ export default class Terrain {
         const loader = new GLTFLoader();
         loader.load("../models/scene.gltf", (gltf) => {
             this.tornado = gltf.scene;
-            this.tornado.position.set(...this.applyPosition(18, 13.5, 18));
-            this.tornado.scale.set(3, 3, 3);
+            this.tornado.position.set(...this.applyPosition(18, 22, 18));
+            this.tornado.scale.set(5, 5, 5);
             this.scene.add(this.tornado);
         });
     }
@@ -70,6 +70,8 @@ export default class Terrain {
     animate(t) {
         if (this.tornado) {
             this.tornado.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.5);
+            this.tornado.position.x = 25 * Math.sin(t*1.5);
+            this.tornado.position.z = 25 * Math.cos(t*1.5);
         }
     }
 }
