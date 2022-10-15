@@ -83,7 +83,7 @@ export default class Textures {
 
     // Concrete textures
     tSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_baseColor.jpg"
+        "textures/sand/Stylized_Sand_001_basecolor.jpg"
     );
     nSand = this.textureLoader.load(
         "textures/sand/Stylized_Sand_001_normal.jpg"
