@@ -13,10 +13,5 @@ export default class Camera {
 
         // Add orbit controls
         const controls = new OrbitControls(this.perspectiveCamera, renderer.domElement);
-
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 1;
-        controls.maxDistance = 500;
     }
 }
