@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 import Textures from './textures';
 
 export default class House {
@@ -76,6 +78,7 @@ export default class House {
         let geometryRoofSupport = this.createRoofPoint();
         let geometryRoof = new THREE.PlaneGeometry(8.5, 5.5, 100, 100, 100);
         let geometryFoundation = new THREE.BoxGeometry(8, 2, 8, 100, 100, 100);
+        let geometryCard = new THREE.BoxGeometry(4, 1, 0.2, 100, 100, 100);
         
         // Create walls
         let object = [
@@ -88,17 +91,19 @@ export default class House {
             new THREE.Mesh(geometryRoof, this.mRoof),
             new THREE.Mesh(geometryRoof, this.mRoof),
             new THREE.Mesh(geometryFoundation, this.mConcrete),
+            new THREE.Mesh(geometryCard, new THREE.MeshPhongMaterial({color: 0xffffff})),
         ];
+        // Position walls
         object[0].position.set(...this.applyPosition(0, 2, 0));
         object[1].position.set(...this.applyPosition(4, 2, 4));
         object[2].position.set(...this.applyPosition(0, 2, 8));
         object[3].position.set(...this.applyPosition(-4, 2, 4));
 
-        // Create roof support
+        // Position roof support
         object[4].position.set(...this.applyPosition(-4, 4, -0.1));
         object[5].position.set(...this.applyPosition(-4, 4, 7.9));
 
-        // Create roof
+        // Position roof
         object[6].position.set(...this.applyPosition(2.4, 4.8, 4));
         object[6].rotateY(1.5708);
         object[6].rotateX(5.16617);
@@ -108,13 +113,30 @@ export default class House {
         object[7].rotateX(5.16617);
         object[7].material.side = THREE.DoubleSide;
 
-        // Create foundation
+        // Position foundation
         object[8].position.set(...this.applyPosition(0, -1, 4));
+
+        // Position white card
+        object[9].position.set(...this.applyPosition(0, 3.5, 8.1));
 
         object.forEach(obj => {
             obj.castShadow = true;
             obj.receiveShadow = true;
             this.scene.add(obj);
+        });
+
+        const fontLoader = new FontLoader();
+        fontLoader.load("./fonts/optimer_bold.typeface.json", (font) => {
+            const textGeometry = new TextGeometry("Gilian Sterckx", {
+                font: font,
+                size: 0.4,
+                height: 0.02,
+            });
+            textGeometry.center();
+            const textMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const topText = new THREE.Mesh(textGeometry, textMaterial);
+            topText.position.set(0, 3.55, 8.2);
+            this.scene.add(topText);
         });
     }
 }
