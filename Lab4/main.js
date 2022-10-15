@@ -23,13 +23,14 @@ let house = new House(scene);
 let terrain = new Terrain(scene);
 let light = new Light(scene);
 
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(gridHelper);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(gridHelper);
 
 let t = 0;
 function animate() {
     requestAnimationFrame(animate);
     //light.animate(t);
+    terrain.animate(t);
     renderer.render(scene, camera.perspectiveCamera);
     t += 0.005;
 }

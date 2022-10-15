@@ -6,8 +6,10 @@ export default class Terrain {
     constructor(scene, position = { x: 0, y: 0, z: 0 }) {
         this.scene = scene;
         this.position = position;
+        this.tornado = null;
         this.createTerrain();
         this.generateObjects();
+        this.createTornado();
     }
 
     textures = new Textures();
@@ -47,11 +49,27 @@ export default class Terrain {
                 const cactus = gltf.scene;
                 const x = (Math.random() - 0.5) * 100;
                 const z = (Math.random() - 0.5) * 100;
-                cactus.children.forEach(child => child.castShadow = true);
-                console.log(x, z, cactus);
+                const rotation = Math.random() * Math.PI * 2;
+                cactus.rotateY(rotation);
                 cactus.position.set(...this.applyPosition(x, 1, z));
                 this.scene.add(cactus);
             });
+        }
+    }
+
+    createTornado() {
+        const loader = new GLTFLoader();
+        loader.load("../models/scene.gltf", (gltf) => {
+            this.tornado = gltf.scene;
+            this.tornado.position.set(...this.applyPosition(18, 13.5, 18));
+            this.tornado.scale.set(3, 3, 3);
+            this.scene.add(this.tornado);
+        });
+    }
+
+    animate(t) {
+        if (this.tornado) {
+            this.tornado.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.5);
         }
     }
 }
