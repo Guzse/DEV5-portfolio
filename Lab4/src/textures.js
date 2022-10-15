@@ -83,18 +83,18 @@ export default class Textures {
 
     // Concrete textures
     tSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_BaseColor.jpg"
+        "textures/sand/Stylized_Sand_001_baseColor.jpg"
     );
     nSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_Normal.jpg"
+        "textures/sand/Stylized_Sand_001_normal.jpg"
     );
     rSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_Roughness.jpg"
+        "textures/sand/Stylized_Sand_001_roughness.jpg"
     );
     aoSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_AmbientOcclusion.jpg"
+        "textures/sand/Stylized_Sand_001_ambientOcclusion.jpg"
     );
     hSand = this.textureLoader.load(
-        "textures/sand/Stylized_Sand_001_Height.png"
+        "textures/sand/Stylized_Sand_001_height.png"
     );  
 }
