@@ -9,7 +9,7 @@ export default class Camera {
             0.1,
             1000
         );
-        this.perspectiveCamera.position.set(0, 0, 10);
+        this.perspectiveCamera.position.set(-15, 10, 30);
 
         // Add orbit controls
         const controls = new OrbitControls(this.perspectiveCamera, renderer.domElement);
