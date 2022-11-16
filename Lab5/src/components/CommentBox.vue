@@ -5,9 +5,9 @@
     </div>
 </template>
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-
+import { ref } from 'vue';
 let comment = ref('');
+const event = new Event('comments:reload');
 
 const addComment = () => {
     const apiUrl = 'https://lab5-p379.onrender.com/api/v1/messages/';
@@ -23,6 +23,7 @@ const addComment = () => {
     })
     .then(() => {
         comment.value = '';
+        document.dispatchEvent(event);
     });
 }
 </script>
