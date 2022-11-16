@@ -11,3 +11,25 @@ body {
     margin: 0;
     padding: 0;
 }
+
+textarea {
+    font-size: 1em;
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    padding: .5em;
+    border-radius: 1.2em;
+    margin-right: .5em;
+}
+
+button {
+    font-size: 1em;
+    border: none;
+    outline: none;
+    background-color: #ff00a2;
+    color: #ffffff;
+    padding: .5em 1em;
+    border-radius: 1.2em;
+    cursor: pointer;
+}
