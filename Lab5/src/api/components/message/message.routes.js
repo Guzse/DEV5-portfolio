@@ -13,6 +13,7 @@ class MessageRoutes {
         this.router.get("/", this.controller.getMessages);
         this.router.get("/:id", this.controller.getMessageByID);
         this.router.post("/", this.controller.createMessage);
+        this.router.put("/:id", this.controller.updateMessage);
     }
 }
 
