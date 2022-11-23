@@ -8,13 +8,18 @@ else {
     require("dotenv").config();
     console.log("%cDevelopment environment detected", "color: green");
 }
-
-if (process.env.MONGO_URI) {
-
-}
-else {
+if (!process.env.MONGO_URI) {
     console.error("ERROR: MONGO_URI not set");
 }
+
+// Set up mongoose
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+let database = mongoose.connection;
+
+database.on('error', console.error.bind(console, 'connection error:'));
+database.once('connected', () => {
+    console.log("%cConnected to the database", "color: green");
+});
 
 const { initiateRouter } = require("./src/api/routes");
 const app = express();
