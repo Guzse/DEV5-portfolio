@@ -1,4 +1,4 @@
-let { MessageRoutes } = require("./components/message/routes");
+let { MessageRoutes } = require("./components/message/message.routes");
 /**
  * Init Express REST routes
  *

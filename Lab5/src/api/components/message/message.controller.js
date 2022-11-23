@@ -1,9 +1,9 @@
 class MessageController {
     getMessages(req, res) {
-        throw new Error("GetMessages Not implemented");
+        res.send("GET Messages");
     }
     createMessage(req, res) {
-        throw new Error("CreateMessage Not implemented");
+        res.send("POST Message");
     }
 }
 

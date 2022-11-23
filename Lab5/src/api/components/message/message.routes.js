@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { MessageController } = require("./controller");
+const { MessageController } = require("./message.controller");
 
 class MessageRoutes {
     controller = new MessageController();
