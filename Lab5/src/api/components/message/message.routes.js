@@ -14,6 +14,7 @@ class MessageRoutes {
         this.router.get("/:id", this.controller.getMessageByID);
         this.router.post("/", this.controller.createMessage);
         this.router.put("/:id", this.controller.updateMessage);
+        this.router.delete("/:id", this.controller.deleteMessage);
     }
 }
 

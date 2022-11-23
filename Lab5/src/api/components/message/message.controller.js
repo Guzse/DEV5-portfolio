@@ -11,7 +11,7 @@ class MessageController {
         });
     }
     getMessages(req, res) {
-        Message.find({}, (error, data) => {
+        Message.find(req.query, (error, data) => {
             if (error) {
                 res.status(500).send(error);
             } else {
@@ -38,6 +38,15 @@ class MessageController {
             const options = { new: true };
             const updatedData = await Message.findByIdAndUpdate(id, data, options);
             res.status(200).json(updatedData);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    }
+    async deleteMessage(req, res) {
+        try {
+            const id = req.params.id;
+            const deletedData = await Message.findByIdAndDelete(id);
+            res.status(200).json(deletedData);
         } catch (error) {
             res.status(500).send(error);
         }
