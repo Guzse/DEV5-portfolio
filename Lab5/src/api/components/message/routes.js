@@ -10,9 +10,8 @@ class MessageRoutes {
     }
 
     initRoutes() {
-        this.router.get("/", () => {
-            throw new Error("Not implemented");
-        });
+        this.router.get("/", this.controller.getMessages);
+        this.router.post("/", this.controller.createMessage);
     }
 }
 
