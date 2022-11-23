@@ -1,0 +1,18 @@
+{
+  "name": "lab5",
+  "version": "1.0.0",
+  "description": "Development 5 API - Lab 5",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
