@@ -11,6 +11,7 @@ class MessageRoutes {
 
     initRoutes() {
         this.router.get("/", this.controller.getMessages);
+        this.router.get("/:id", this.controller.getMessageByID);
         this.router.post("/", this.controller.createMessage);
     }
 }
